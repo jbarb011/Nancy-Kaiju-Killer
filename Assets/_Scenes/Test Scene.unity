@@ -202,15 +202,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
-  playerSpeed: 10
+  playerSpeed: 32
   moveX: 0
-  playerJumpMin: 800
-  playerJumpMax: 1500
-  TimeCharge: 0
-  ChargeMultiplier: 1250
-  AirJumpSpeed: 500
-  NumAirJumps: 2
-  AirJumps: 0
+  groundJumpSpeed: 1250
+  airJumpSpeed: 1000
+  numAirJumps: 2
+  airJumps: 0
   inAir: 0
 --- !u!50 &1441078832
 Rigidbody2D:
