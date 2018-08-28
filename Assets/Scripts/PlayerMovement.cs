@@ -6,15 +6,18 @@ public class PlayerMovement : MonoBehaviour {
 
     public bool facingRight = true;             // Sprite Direction
 
-    public int playerSpeed = 10;                // X-axis speed
+    public int playerSpeed = 20;                // X-axis speed
     public float moveX;                         // X-axis movement
 
-    public float groundJumpSpeed = 1500f;       // Speed in which Player Jumps
+    public float groundJumpSpeed = 700f;       // Speed in which Player Jumps
 
-    public float airJumpSpeed = 1000f;          // Jump for when in air
+    public float airJumpSpeed = 500f;          // Jump for when in air
     public int numAirJumps = 2;                 // Number of air jumps you can make in game
     public int airJumps;                        // Number of air jumps currently available
     public bool inAir;                          // Check if not on Ground
+
+    public float fallMultiplier = 3f;         //Increased falling for peak jumps
+    public float lowJumpMultiplier = 3f;        //Increased falling for low jumps
 
     Rigidbody2D rb;                             // Rigidbody for Player
 
@@ -35,6 +38,10 @@ public class PlayerMovement : MonoBehaviour {
         //INPUT
         moveX = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump")) Jump();
+
+        //CUSTOM GRAVITY
+        if (rb.velocity.y < 2.5) rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        else if (rb.velocity.y > 2.5 && !Input.GetButton("Jump")) rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
 
 
 

@@ -18,7 +18,7 @@ public class CameraMovement : MonoBehaviour {
     void Awake()
     {
         // GET GAME OBJECT
-        Player = GameObject.Find("Nancy 1");
+        Player = GameObject.Find("Player");
         readytostart = true;
     }
 
