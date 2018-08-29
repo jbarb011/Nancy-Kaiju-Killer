@@ -177,7 +177,9 @@ MonoBehaviour:
   hitting: 0
   hit_timer: 0
   hit_cooldown: 0.2
+  kb_amount: 100
   hittrigger: {fileID: 160888114}
+  source: {fileID: 1441078830}
 --- !u!1 &336892888
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +193,7 @@ GameObject:
   - component: {fileID: 336892893}
   - component: {fileID: 336892891}
   - component: {fileID: 336892894}
+  - component: {fileID: 336892895}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Enemy
@@ -317,9 +320,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  kb_amount: 50
-  kb_timer_amount: 0.2
-  kb_timer: 0
 --- !u!50 &336892894
 Rigidbody2D:
   serializedVersion: 4
@@ -332,7 +332,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4.03
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -340,6 +340,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &336892895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 336892888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6a84d0bfdaa9248b7693b3a8e59ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage_output: 5
+  kb_amount: 1000
+  hittrigger: {fileID: 336892891}
+  source: {fileID: 336892888}
 --- !u!1001 &817525549
 Prefab:
   m_ObjectHideFlags: 0
@@ -557,6 +572,8 @@ MonoBehaviour:
   inAir: 0
   fallMultiplier: 3
   lowJumpMultiplier: 3
+  kb_timer: 0
+  kb_duration: 0.05
 --- !u!50 &1441078832
 Rigidbody2D:
   serializedVersion: 4
@@ -691,7 +708,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1441078830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -4.26, z: 0}
+  m_LocalPosition: {x: -0.06999993, y: -4.21, z: 0}
   m_LocalScale: {x: 0.26345482, y: 0.26345482, z: 0.26345482}
   m_Children:
   - {fileID: 160888113}
@@ -700,7 +717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.25, y: -4.26}
+  m_AnchoredPosition: {x: -0.07, y: -4.21}
   m_SizeDelta: {x: 6, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1441078838
@@ -716,6 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player_Health: 100
   player_box: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &1469799908
 GameObject:
   m_ObjectHideFlags: 0
