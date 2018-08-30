@@ -35,18 +35,23 @@ public class EnemyHealth : MonoBehaviour {
             else
             {
                 //get kb and position of source of damage
-                float kb_amount = collision.GetComponent<PlayerDamage>().kb_amount;
-                GameObject source = collision.GetComponent<PlayerDamage>().source;
+                float kb_amount = collision.GetComponent<PlayerDamage>().kb_output;
 
-                //kickback in whichever direction they came from
-                if (source.GetComponent<Transform>().localPosition.x < gameObject.GetComponent<Transform>().localPosition.x)
+                if(kb_amount > 0)
                 {
-                    rb.AddForce(new Vector2(kb_amount, 0));
+                    GameObject source = collision.GetComponent<PlayerDamage>().source;
+
+                    //kickback in whichever direction they came from
+                    if (source.GetComponent<Transform>().localPosition.x < gameObject.GetComponent<Transform>().localPosition.x)
+                    {
+                        rb.AddForce(new Vector2(kb_amount, 0));
+                    }
+                    else
+                    {
+                        rb.AddForce(new Vector2(-kb_amount, 0));
+                    }
                 }
-                else
-                {
-                    rb.AddForce(new Vector2(-kb_amount, 0));
-                }
+
             }
         }
     }
