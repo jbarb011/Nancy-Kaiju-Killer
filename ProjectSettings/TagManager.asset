@@ -9,6 +9,7 @@ TagManager:
   - PlayerMelee
   - Enemy
   - PlayerAttack
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

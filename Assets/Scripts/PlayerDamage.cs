@@ -12,8 +12,8 @@ public class PlayerDamage : MonoBehaviour {
     public float hit_cooldown = 0.2f;       //attackbox duration
 
     //FSM VARIABLES
-    public float Charge_duration = 0.6f;
-    public float Rapid_duration = 0.6f;
+    public float Charge_duration = 0.8f;
+    public float Rapid_duration = 0.8f;
     public float fsm_timer = 0f;
     public int NumPressed = 0;
     public int NumRapid = 3;
@@ -90,7 +90,7 @@ public class PlayerDamage : MonoBehaviour {
 
             if (Input.GetButtonUp("Z"))
             {
-                if (fsm_timer >= Charge_duration)
+                if (fsm_timer > Charge_duration)
                 {
                     Debug.Log("Charge Punch");
                     pstate = PunchStates.Waiting;
@@ -106,7 +106,7 @@ public class PlayerDamage : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log(NumPressed);
+                    Debug.Log("Rapid Punch");
                     pstate = PunchStates.Not_Pressed;
                     hit(1f, false);
                 }
@@ -123,6 +123,9 @@ public class PlayerDamage : MonoBehaviour {
             {
                 NumPressed++;
                 pstate = PunchStates.Pressed;
+
+
+                fsm_timer = 0;
             }
             else
             {
@@ -134,8 +137,7 @@ public class PlayerDamage : MonoBehaviour {
                 {
                     pstate = PunchStates.Waiting;
                     NumPressed = 0;
-
-                    Debug.Log(fsm_timer);
+                    
                     fsm_timer = 0;
                 }
             }
@@ -150,7 +152,6 @@ public class PlayerDamage : MonoBehaviour {
     private void hit(float Multiplier, bool kickback_on)
     {
         int dmgMult = (int)Multiplier;
-        Debug.Log(Multiplier);
         damage_output = min_damage * dmgMult;
 
         if (kickback_on)

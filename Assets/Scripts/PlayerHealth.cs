@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if you come in contact with ENEMY
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyProjectile")
         {
             // Subtract health
             Player_Health -= collision.gameObject.GetComponent<EnemyDamage>().damage_output;
@@ -50,6 +50,11 @@ public class PlayerHealth : MonoBehaviour {
                 }
 
                 gameObject.GetComponent<PlayerMovement>().Player_Hit();
+            }
+
+            if (collision.gameObject.tag == "EnemyProjectile")
+            {
+                Destroy(collision.gameObject);
             }
         }
     }

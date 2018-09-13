@@ -44,11 +44,11 @@ public class EnemyHealth : MonoBehaviour {
                     //kickback in whichever direction they came from
                     if (source.GetComponent<Transform>().localPosition.x < gameObject.GetComponent<Transform>().localPosition.x)
                     {
-                        rb.AddForce(new Vector2(kb_amount, 0));
+                        rb.AddForce(new Vector2(kb_amount, 150f));
                     }
                     else
                     {
-                        rb.AddForce(new Vector2(-kb_amount, 0));
+                        rb.AddForce(new Vector2(-kb_amount, 150f));
                     }
                 }
 

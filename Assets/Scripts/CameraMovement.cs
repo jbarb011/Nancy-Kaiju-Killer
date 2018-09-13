@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (readytostart)
+        if (readytostart && Player != null)
         {
             // GET POSITION OF NANCY
             localPosition = Player.GetComponent<Transform>().localPosition;
